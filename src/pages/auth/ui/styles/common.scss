@@ -1,0 +1,72 @@
+@use 'sass:map';
+
+:global {
+  .ant-form-item-label {
+    font-weight: 500;
+  }
+
+  .ant-input, .ant-input-password {
+    border-radius: 6px;
+    
+    &:hover {
+      border-color: var(--vp-c-brand);
+    }
+    
+    &:focus {
+      border-color: var(--vp-c-brand);
+      box-shadow: 0 0 0 2px rgba(var(--vp-c-brand-rgb), 0.2);
+    }
+  }
+
+  .ant-btn-primary {
+    background: var(--vp-c-brand);
+    
+    &:hover {
+      background: var(--vp-c-brand-dark) !important;
+    }
+  }
+
+  .ant-card {
+    border-radius: 12px;
+    
+    .ant-card-head {
+      border-bottom: 1px solid var(--vp-c-divider);
+      
+      .ant-card-head-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Глобальные стили для всех кнопок
+  .ant-btn {
+    &:focus-visible {
+      outline: none !important;
+    }
+
+    &::after {
+      display: none !important; // Убираем анимацию волны
+    }
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  // Стили для кнопок действий (лайк, читать позже)
+  .action-button {
+    border: none !important;
+    
+    &:hover, &:focus {
+      color: var(--vp-c-brand) !important;
+      background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+    }
+
+    &:active {
+      background-color: rgba(var(--vp-c-brand-rgb), 0.2) !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+} 

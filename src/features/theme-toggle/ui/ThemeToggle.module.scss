@@ -1,0 +1,31 @@
+.toggle {
+  color: var(--vp-c-text-2);
+  transition: all 0.2s ease;
+  padding: 0 10px;
+  height: 32px;
+  width: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  
+  &:hover {
+    color: var(--vp-c-brand);
+    background-color: rgba(var(--vp-c-brand-rgb), 0.1);
+  }
+
+  // Убираем эффект залипания на сенсорных устройствах
+  @media (hover: none) {
+    &:active, &:focus {
+      color: var(--vp-c-text-2);
+      background-color: transparent;
+    }
+  }
+
+  // Для мобильных устройств можно сделать еще больше
+  @media (max-width: 768px) {
+    width: 44px;
+    min-width: 44px;
+  }
+} 

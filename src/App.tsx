@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from '@/widgets';
+import { HomePage } from '@/pages/home';
+import { LoginPage, RegisterPage } from '@/pages/auth';
+import { ExplorePage } from '@/pages/explore';
+import { FavoritesPage } from '@/pages/favorites';
+import { ReadLaterPage } from '@/pages/read-later';
+import { ProtectedRoute } from '@/app/providers/router/ProtectedRoute';
+import { SearchPage } from '@/pages/search';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Layout>
+      <Routes>
+        {/* Публичные маршруты */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        
+        {/* Защищенные маршруты */}
+        <Route path="/" element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        } />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/read-later" element={<ReadLaterPage />} />
+        <Route path="/regions" element={
+          <ProtectedRoute>
+            <div>Regions Page (Coming Soon)</div>
+          </ProtectedRoute>
+        } />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
+    </Layout>
+  );
+};
 
-export default App
+export default App;

@@ -1,0 +1,167 @@
+.authButton {
+  background: var(--vp-c-bg-soft) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    color: var(--vp-c-brand) !important;
+    border-color: var(--vp-c-brand) !important;
+    background: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+  }
+
+  &:active {
+    transform: none !important;
+  }
+
+  // Убираем эффект залипания на сенсорных устройствах
+  @media (hover: none) {
+    &:active, &:focus {
+      color: var(--vp-c-text-1) !important;
+      border-color: var(--vp-c-divider) !important;
+      background: var(--vp-c-bg-soft) !important;
+    }
+  }
+
+  .anticon {
+    color: inherit;
+  }
+
+  @media (max-width: 360px) {
+    padding: 4px 8px !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+:global {
+  // Стили для дропдауна профиля
+  .ant-dropdown {
+    .ant-dropdown-menu {
+      background: var(--vp-c-bg-soft);
+      border: 1px solid var(--vp-c-divider);
+      
+      .ant-dropdown-menu-item {
+        color: var(--vp-c-text-1);
+        
+        &:hover {
+          background: rgba(var(--vp-c-brand-rgb), 0.1);
+          color: var(--vp-c-brand);
+        }
+
+        &.ant-dropdown-menu-item-danger {
+          color: #ff4d4f;
+          
+          &:hover {
+            background: rgba(255, 77, 79, 0.1);
+            color: #ff7875;
+          }
+        }
+
+        .anticon {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  // Обновляем селектор, чтобы он работал и для Card
+  .auth-modal, .ant-modal.auth-modal {
+    .ant-modal-content,
+    &.ant-card {
+      background: var(--vp-c-bg);
+      border: 1px solid var(--vp-c-divider) !important;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .ant-modal-header,
+    .ant-card-head {
+      background: var(--vp-c-bg);
+      border-bottom: 1px solid var(--vp-c-divider);
+      
+      .ant-modal-title,
+      .ant-card-head-title {
+        color: var(--vp-c-text-1);
+      }
+    }
+
+    .ant-input, 
+    .ant-input-password {
+      background: var(--vp-c-bg-soft);
+      border: 1px solid var(--vp-c-divider);
+      color: var(--vp-c-text-1);
+      
+      &:hover, &:focus {
+        border-color: var(--vp-c-brand);
+      }
+
+      .anticon {
+        color: var(--vp-c-text-2);
+      }
+    }
+
+    .ant-form-item-label > label {
+      color: var(--vp-c-text-1);
+    }
+
+    // Добавляем стиль для формы
+    .ant-form {
+      color: var(--vp-c-text-1);
+    }
+
+    // Возвращаем переменную темы
+    .loginLink, .registerLink {
+      color: var(--vp-c-text-1);
+    }
+
+    .ant-btn-primary {
+      background: var(--vp-c-brand);
+      border-color: var(--vp-c-brand);
+      
+      &:hover {
+        background: var(--vp-c-brand-dark);
+        border-color: var(--vp-c-brand-dark);
+      }
+    }
+
+    .ant-btn-default {
+      background: var(--vp-c-bg-soft);
+      border: 1px solid var(--vp-c-divider);
+      color: var(--vp-c-text-1);
+      
+      &:hover {
+        color: var(--vp-c-brand);
+        border-color: var(--vp-c-brand);
+      }
+    }
+
+    .ant-btn-link {
+      color: var(--vp-c-brand);
+      
+      &:hover {
+        color: var(--vp-c-brand-dark);
+      }
+    }
+
+    .ant-card-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .ant-card {
+        margin: 0.5rem;
+      }
+
+      // Увеличиваем отступы для кнопок на мобильных
+      .auth {
+        gap: 0.75rem;
+      }
+    }
+  }
+
+  .ant-card-bordered {
+    border-color: var(--vp-c-divider) !important;
+  }
+} 

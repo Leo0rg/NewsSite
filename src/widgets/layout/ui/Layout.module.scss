@@ -1,0 +1,225 @@
+.layout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  
+  :global {
+    .ant-layout {
+      background: var(--vp-c-bg);
+      min-height: 100vh;
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+.sider {
+  background: var(--vp-c-bg-soft) !important;
+  border-right: 1px solid var(--vp-c-divider);
+  position: fixed !important;
+  height: 100vh;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  
+  :global {
+    .ant-menu {
+      background: transparent;
+      border: none;
+      flex: 1;
+    }
+
+    .ant-menu-item {
+      color: var(--vp-c-text-2);
+      transition: all 0.2s ease;
+      background: transparent !important;
+      -webkit-tap-highlight-color: transparent;
+      
+      &:hover {
+        color: var(--vp-c-brand) !important;
+        background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+      }
+      
+      &:active {
+        color: var(--vp-c-text-2) !important;
+        background-color: transparent !important;
+      }
+      
+      &.ant-menu-item-selected {
+        background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+        color: var(--vp-c-brand) !important;
+      }
+
+      @media (hover: none) {
+        &:active, &:focus {
+          color: var(--vp-c-text-2) !important;
+          background-color: transparent !important;
+        }
+
+        &.ant-menu-item-selected {
+          background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+          color: var(--vp-c-brand) !important;
+        }
+      }
+    }
+
+    .anticon {
+      color: inherit;
+    }
+  }
+}
+
+.siderContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  flex: 1;
+}
+
+.trigger {
+  height: 48px;
+  border-top: 1px solid var(--vp-c-divider);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vp-c-text-2);
+  margin-top: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  outline: none;
+  
+  &:hover {
+    color: var(--vp-c-brand);
+    background-color: rgba(var(--vp-c-brand-rgb), 0.1);
+  }
+
+  &:active {
+    color: var(--vp-c-text-2);
+    background-color: transparent;
+  }
+
+  &:focus {
+    color: var(--vp-c-text-2);
+    background-color: transparent;
+  }
+
+  @media (hover: none) {
+    &:active, &:focus {
+      color: var(--vp-c-text-2);
+      background-color: transparent;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  background: var(--vp-c-bg);
+  overflow: auto;
+  width: calc(100% - 200px);
+  padding: 0;
+  padding-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1920px) {
+  .main {
+    max-width: 1800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .main {
+    padding: 0 1rem;
+  }
+
+  .trigger {
+    display: none;
+  }
+}
+
+.mobileDrawer {
+  :global {
+    .ant-drawer-header {
+      background: var(--vp-c-bg-soft);
+      border-bottom: 1px solid var(--vp-c-divider);
+    }
+
+    .ant-drawer-close {
+      color: var(--vp-c-text-2);
+      -webkit-tap-highlight-color: transparent;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        color: var(--vp-c-brand);
+        background-color: rgba(var(--vp-c-brand-rgb), 0.1);
+      }
+
+      &:active {
+        color: var(--vp-c-text-2);
+        background-color: transparent;
+      }
+    }
+
+    .ant-drawer-body {
+      background: var(--vp-c-bg);
+      padding: 0;
+
+      .ant-menu,
+      .ant-menu-light,
+      .ant-menu-inline {
+        background: transparent !important;
+        border: none !important;
+        color: var(--vp-c-text-2) !important;
+      }
+
+      .ant-menu-item {
+        background: transparent !important;
+        color: var(--vp-c-text-2) !important;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: var(--vp-c-brand) !important;
+          background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+        }
+
+        &:active {
+          color: var(--vp-c-text-2) !important;
+          background-color: transparent !important;
+        }
+
+        &.ant-menu-item-selected {
+          background-color: rgba(var(--vp-c-brand-rgb), 0.1) !important;
+          color: var(--vp-c-brand) !important;
+        }
+
+        .anticon {
+          color: inherit !important;
+        }
+      }
+    }
+  }
+} 

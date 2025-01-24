@@ -4,30 +4,92 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Переменные цветов */
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f9f9f9;
+  --vp-c-bg-mute: #f1f1f1;
+  --vp-c-divider: #e5e7eb;
+  --vp-c-text-1: #213547;
+  --vp-c-text-2: #374151;
+  --vp-c-text-3: #6b7280;
+  --vp-c-brand: #646cff;
+  --vp-c-brand-dark: #5058cc;
+  --vp-c-brand-rgb: 100, 108, 255;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+}
+
+/* Добавим медиа-запрос для больших экранов */
+@media (min-width: 1920px) {
+  #root {
+    max-width: 1800px;
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  #root {
+    width: 100%;
+  }
+}
+
+/* Базовые стили для ссылок */
+a {
+  color: var(--vp-c-brand);
+  text-decoration: none;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+  color: var(--vp-c-brand-dark);
+}
+
+/* Вместо этого используем классы */
+:root.light {
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f9f9f9;
+  --vp-c-bg-mute: #f1f1f1;
+  --vp-c-divider: #e5e7eb;
+  --vp-c-text-1: #213547;
+  --vp-c-text-2: #374151;
+  --vp-c-text-3: #6b7280;
+}
+
+:root.dark {
+  --vp-c-bg: #1a1a1a;
+  --vp-c-bg-soft: #242424;
+  --vp-c-bg-mute: #2f2f2f;
+  --vp-c-divider: #404040;
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #e5e7eb;
+  --vp-c-text-3: #9ca3af;
 }
 
 h1 {
@@ -45,6 +107,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  -webkit-tap-highlight-color: transparent;
 }
 button:hover {
   border-color: #646cff;
@@ -54,15 +117,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Убираем outline для всех элементов */
+*:focus {
+  outline: none !important;
 }

@@ -1,0 +1,163 @@
+.header {
+  background: var(--vp-c-bg-soft);
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding: 0;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  width: 100%;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.trigger {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--vp-c-text-2);
+  border: none !important;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+  background: transparent;
+  
+  &:hover {
+    color: var(--vp-c-brand);
+    background-color: rgba(var(--vp-c-brand-rgb), 0.1);
+  }
+
+  &:active {
+    transform: none;
+  }
+
+  &:focus {
+    color: var(--vp-c-text-2);
+    background-color: transparent;
+  }
+
+  &::after, &:focus::after {
+    display: none;
+  }
+
+  // Убираем эффекты после клика на сенсорных устройствах
+  @media (hover: none) {
+    &:active, &:focus {
+      color: var(--vp-c-text-2);
+      background-color: transparent;
+      transform: none;
+    }
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  justify-self: center;
+  
+  &:hover, &:active, &:focus {
+    color: var(--vp-c-text-1);
+  }
+}
+
+.auth {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.placeholder {
+  width: 48px;
+  height: 48px;
+}
+
+.headerStart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobileTitle {
+  display: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .auth {
+    gap: 0.25rem;
+  }
+
+  .authHeader {
+    .nav {
+      grid-template-columns: 1fr auto;
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .mobileTitle {
+      display: block;
+    }
+
+    .headerStart {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding: 0 0.25rem;
+  }
+
+  .auth {
+    gap: 0.15rem;
+  }
+
+  .mobileTitle {
+    font-size: 1rem;
+  }
+
+  .headerStart {
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .nav {
+    max-width: 1800px;
+  }
+} 
