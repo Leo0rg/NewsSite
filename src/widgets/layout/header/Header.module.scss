@@ -13,7 +13,7 @@
 
 .nav {
   display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  grid-template-columns: 48px 1fr auto;
   align-items: center;
   height: 100%;
   gap: 1rem;
@@ -81,8 +81,9 @@
 .auth {
   display: flex;
   gap: 0.5rem;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  min-width: 200px;
 }
 
 .placeholder {
@@ -114,12 +115,12 @@
   }
 
   .auth {
-    gap: 0.25rem;
+    min-width: auto;
   }
 
-  .authHeader {
+  .compact {
     .nav {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 48px 1fr auto;
     }
 
     .logo {
@@ -128,12 +129,14 @@
 
     .mobileTitle {
       display: block;
+      font-size: 1.125rem;
+      margin-right: 0.5rem;
     }
 
-    .headerStart {
+    .auth {
       display: flex;
-      align-items: center;
-      gap: 1rem;
+      gap: 0.25rem;
+      justify-content: flex-end;
     }
   }
 }
@@ -147,12 +150,17 @@
     gap: 0.15rem;
   }
 
-  .mobileTitle {
-    font-size: 1rem;
+  .compact {
+    .mobileTitle {
+      font-size: 1rem;
+    }
   }
 
-  .headerStart {
-    gap: 0.5rem;
+  :global {
+    .ant-btn {
+      padding: 4px 8px;
+      font-size: 0.875rem;
+    }
   }
 }
 

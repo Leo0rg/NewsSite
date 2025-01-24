@@ -1,4 +1,4 @@
-@import '@/shared/styles/pages.module.scss';
+@use '@/shared/styles/pages.module.scss' as pages;
 
 .categorySelect {
   width: 200px;

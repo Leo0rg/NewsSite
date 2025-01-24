@@ -7,6 +7,7 @@ import {
   MenuFoldOutlined 
 } from '@ant-design/icons';
 import { useAuth } from '@/entities/auth';
+import { useMediaQuery } from '@/shared/hooks';
 import styles from './Header.module.scss';
 import authStyles from '@/entities/auth/ui/styles/auth.module.scss';
 import { ThemeToggle } from '@/features/theme-toggle/ui/ThemeToggle';
@@ -23,6 +24,13 @@ export const Header = ({ collapsed, onCollapse, showTrigger = false }: HeaderPro
   const { user, isAuthenticated, logout } = useAuth();
   const [messageApi, contextHolder] = message.useMessage();
   const location = useLocation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  const shouldUseCompact = isMobile && (
+    isAuthenticated || 
+    location.pathname.includes('login') || 
+    location.pathname.includes('register')
+  );
 
   const handleMenuClick = ({ key }: { key: string }) => {
     if (key === 'logout') {
@@ -53,7 +61,7 @@ export const Header = ({ collapsed, onCollapse, showTrigger = false }: HeaderPro
   const isAuthPage = location.pathname.includes('login') || location.pathname.includes('register');
 
   return (
-    <header className={`${styles.header} ${isAuthPage ? styles.authHeader : ''}`}>
+    <header className={`${styles.header} ${shouldUseCompact ? styles.compact : ''}`}>
       {contextHolder}
       <div className={styles.nav}>
         {showTrigger ? (
@@ -64,16 +72,20 @@ export const Header = ({ collapsed, onCollapse, showTrigger = false }: HeaderPro
               onClick={() => onCollapse(!collapsed)}
               className={styles.trigger}
             />
-            {isAuthPage && (
+            {shouldUseCompact && (
               <span className={styles.mobileTitle}>NewsApp</span>
             )}
           </div>
         ) : (
           <div className={styles.placeholder} />
         )}
-        <Link to="/" className={styles.logo}>
-          NewsApp
-        </Link>
+        
+        {!shouldUseCompact && (
+          <Link to="/" className={styles.logo}>
+            NewsApp
+          </Link>
+        )}
+        
         <div className={styles.auth}>
           <ThemeToggle />
           {isAuthenticated ? (
